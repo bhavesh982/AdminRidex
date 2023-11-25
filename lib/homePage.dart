@@ -65,13 +65,27 @@ CommonMethods commonMethods=CommonMethods();
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("BlockStatus : ${snapshot.child("blockstatus").value.toString()}"),
-                        ElevatedButton(onPressed: (){
+                        Text("Blocked : ${snapshot.child("blockstatus").value.toString()}",style: const TextStyle(
+                          fontSize: 18
+                        ),),
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: buttonTheme
+                            ),
+                            onPressed: (){
                           changeBlockStatusToApproved(snapshot);
-                        }, child: const Text("  Approve ")),
-                        ElevatedButton(onPressed: (){
+                        }, child: const Text("Approve",style: TextStyle(
+                            color: Colors.white
+                        ),)),
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: buttonTheme
+                            ),
+                            onPressed: (){
                           changeBlockStatusToDisapproved(snapshot);
-                        }, child: const Text("Disapprove"))
+                        }, child: const Text("  Block  ",style: TextStyle(
+                          color: Colors.white
+                        ),))
                       ],
                     ),
                   )
@@ -99,6 +113,7 @@ CommonMethods commonMethods=CommonMethods();
   }
 
   changeBlockStatusToDisapproved(DataSnapshot snapshot) async{
+
     showDialog(
         barrierDismissible: false,
         context: context,
